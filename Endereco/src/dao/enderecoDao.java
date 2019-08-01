@@ -49,4 +49,17 @@ public class enderecoDao {
             return false;
         }
     }
+    
+    public static boolean excluir(Endereco objeto) {
+        String sql = "DELETE FROM endereco WHERE codigo=?";
+        try {
+            PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
+            ps.setInt(1, objeto.getCodigo());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
+    }
 }
